@@ -1,29 +1,19 @@
 import React from "react";
+import profileStyle from './Profile.module.css';
+import MyPosts from "./MyPosts/MyPosts";
+
 
 const Profile = () =>{
     return(
-      <div className='content'>
+      <div className={profileStyle.content}>
       <div>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" alt=""/>
       </div>
 
       <div>
-
+        ava + description
       </div>
-
-      <div>
-        <div>
-          new post
-        </div>
-        <div>
-          <div>
-            post 1
-          </div>
-          <div>
-            post2
-          </div>
-        </div>
-      </div>
+      <MyPosts/>
     </div>
     )
 }
