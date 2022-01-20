@@ -50,3 +50,8 @@
 a {
   text-decoration: none;
 }
+
+.app-wrapper-content{
+  grid-area: c;
+  background-color: hotpink;
+}
