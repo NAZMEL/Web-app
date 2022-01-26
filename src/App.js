@@ -27,6 +27,7 @@ const App = (props) => {
             <Route path="/settings" element={<Settings/>}/>
           </Routes>
         </div>
+        
       </div>
       </BrowserRouter>
   );

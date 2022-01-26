@@ -6,8 +6,8 @@ const Message = (props) =>{
 
     return(
         <div className={style.message}>
-        {props.message}
-    </div>
+            {props.message}
+        </div>
     )
     
 }
