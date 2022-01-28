@@ -27,6 +27,7 @@ let messages=[
 
 let state = {
       posts: posts,
+      newPostText: 'default text',
       dialogs: dialogs,
       messages: messages
   }
@@ -39,8 +40,13 @@ export let addPost = (postMessage) =>{
     }
 
     posts.push(newPost);
+    state.newPostText = '';
     rerenderEntireTree(state);
   }
 
+  export let updateNewPostText = (newText) =>{
+    state.newPostText = newText;
+    rerenderEntireTree(state);
+  }
 
 export default state;
