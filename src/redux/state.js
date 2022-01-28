@@ -1,10 +1,11 @@
+import { rerenderEntireTree } from "../render";
 
 let posts=[
     {id: 1, message: 'Hi, how are you?', likesCount: 12},
     {id: 2, message: 'Well, and how are you?', likesCount: 12}
   ]
   
-  let dialogs=[
+let dialogs=[
     {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
     {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
     {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
@@ -15,7 +16,7 @@ let posts=[
     {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
   ];
   
-  let messages=[
+let messages=[
     {id: 1, message: 'Message'},
     {id: 1, message: 'Message 2'},
     {id: 1, message: 'Message 3'},
@@ -24,11 +25,22 @@ let posts=[
     {id: 1, message: 'Message 6'},
   ];
 
-  let state = {
+let state = {
       posts: posts,
       dialogs: dialogs,
       messages: messages
   }
 
+export let addPost = (postMessage) =>{
+    let newPost={
+      id: 5,
+      message: postMessage,
+      likesCount: 0
+    }
 
-  export default state;
+    posts.push(newPost);
+    rerenderEntireTree(state);
+  }
+
+
+export default state;
