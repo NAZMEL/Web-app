@@ -1,57 +1,60 @@
-let rerenderEntireTree = () => {}
+let store = {
+  _state: {
+    posts: [
+      {id: 1, message: 'Hi, how are you?', likesCount: 12},
+      {id: 2, message: 'Well, and how are you?', likesCount: 12}  
+    ],
+    newPostText: 'default text',
+    dialogs: [
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+      {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+  ],
+    messages: [
+      {id: 1, message: 'Message'},
+      {id: 1, message: 'Message 2'},
+      {id: 1, message: 'Message 3'},
+      {id: 1, message: 'Message 4'},
+      {id: 1, message: 'Message 5'},
+      {id: 1, message: 'Message 6'},
+    ]
+  },
+  getState(){
+    return this._state;
+  },
 
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-}
+  _callSubscriber(){
+    console.log('It is store');
+  },
 
-let posts=[
-    {id: 1, message: 'Hi, how are you?', likesCount: 12},
-    {id: 2, message: 'Well, and how are you?', likesCount: 12}
-  ]
-  
-let dialogs=[
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
-  ];
-  
-let messages=[
-    {id: 1, message: 'Message'},
-    {id: 1, message: 'Message 2'},
-    {id: 1, message: 'Message 3'},
-    {id: 1, message: 'Message 4'},
-    {id: 1, message: 'Message 5'},
-    {id: 1, message: 'Message 6'},
-  ];
+  subscribe(observer){
+    this._callSubscriber = observer;
+  },
 
-let state = {
-      posts: posts,
-      newPostText: 'default text',
-      dialogs: dialogs,
-      messages: messages
-  }
-
-export const addPost = (postMessage) =>{
+  addPost(postMessage){
     let newPost={
       id: 5,
       message: postMessage,
       likesCount: 0
     }
 
-    posts.push(newPost);
-    state.newPostText = '';
-    rerenderEntireTree(state);
+    this._state.posts.push(newPost);
+    this._state.newPostText = '';
+    this._callSubscriber(state);
+  },
+
+  updateNewPostText(newText){
+    this._state.newPostText = newText;
+    this._callSubscriber(state);
   }
 
-export const updateNewPostText = (newText) =>{
-    state.newPostText = newText;
-    rerenderEntireTree(state);
-  }
+}
 
 
-export default state;
+export default store;
+window.store = store;
