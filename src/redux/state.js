@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 
 let store = {
   _state: {
@@ -7,7 +9,6 @@ let store = {
       {id: 1, message: 'Hi, how are you?', likesCount: 12},
       {id: 2, message: 'Well, and how are you?', likesCount: 12}  
     ],
-    newPostText: 'default text',
     dialogs: [
       {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
       {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
@@ -25,7 +26,9 @@ let store = {
       {id: 1, message: 'Message 4'},
       {id: 1, message: 'Message 5'},
       {id: 1, message: 'Message 6'},
-    ]
+    ],
+    newPostText: 'default text',
+    newMessageText: 'Input your message text',
   },
   getState(){
     return this._state;
@@ -55,17 +58,27 @@ let store = {
       this._state.newPostText = action.newText;
       this._callSubscriber(this._state);
     }
+    else if(action.type === ADD_MESSAGE){
+      let newMessage = {
+        id: 2,
+        message: this._state.newMessageText,
+      };
+
+      this._state.messages.push(newMessage);
+      this._state.newMessageText = '';
+      this._callSubscriber(this._state);
+    }
+    else if(action.type === UPDATE_MESSAGE){
+      this._state.newMessageText = action.newMessageText;
+      this._callSubscriber(this._state);
+    }
   }
 }
 
-export const addPostActionCreator = () =>{
-  return {type : ADD_POST};
-}
-
-export const updataNewPostTextActionCreator = (text) =>{
-  return {type: UPDATE_NEW_POST_TEXT, newText: text};
-}
-
+export const addPostActionCreator = () => ({type : ADD_POST});
+export const updataNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
+export const updateMessageActionCreator = (text) => ({type: UPDATE_MESSAGE, newMessageText: text});
 
 export default store;
 window.store = store;
