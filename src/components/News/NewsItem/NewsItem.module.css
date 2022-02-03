@@ -1,12 +1,21 @@
 .newsItemBlock{
-    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    border: 1px solid yellow;
+    border-radius: 30px;
     margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgb(118, 118, 230);
 }
 
 .newsTitleBlock{
+    text-align: center;
     color: yellow;
 }
 
 .newsDescriptionBlock{
     margin: 10px 0 20px 0;
+    color: white;
 }
