@@ -4,30 +4,25 @@ const UPDATE_NEW_NEWS_DESCRIPTION = 'UPDATE-NEW-NEWS-DESCRIPTION';
 
 const newsReducer = (state, action) =>{
     switch(action.type){
-      case ADD_NEWS:
-        break;
-      case UPDATE_NEW_NEWS_TITLE:
-        break;
+        case ADD_NEWS:
+            let newNews = {
+                id: 4,
+                title: state.newNewsTitle,
+                description: state.newNewsDescription,
+            };
+
+            state.news.push(newNews);
+            state.newNewsTitle = '';
+            state.newNewsDescription = '';
+            break;
+        case UPDATE_NEW_NEWS_TITLE:
+            state.newNewsTitle = action.newText;
+            break;
         case UPDATE_NEW_NEWS_DESCRIPTION:
+            state.newNewsDescription = action.newText;
             break;
     }
     return state;
-
-    // if(action.type === ADD_POST){
-    //     let newPost={
-    //       id: 5,
-    //       message: state.newPostText,
-    //       likesCount: 0
-    //     }
-    
-    //     state.posts.push(newPost);
-    //     state.newPostText = '';
-    //   }
-    //   else if(action.type === UPDATE_NEW_POST_TEXT){
-        
-    //   }
-      
-    // return state;
 }
 
 export const addNewsCreator = () => ({type : ADD_NEWS});
