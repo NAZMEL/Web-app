@@ -5,8 +5,9 @@ import { addPostActionCreator, updataNewPostTextActionCreator} from "../../../re
 
 
 const MyPosts = (props) => {
-    let postsElements = props.posts
+    let postsElements = props.profilePage.posts
       .map(post => <Post message={post.message} like={post.likesCount}/> );
+    let newPostText = props.profilePage.newPostText;
 
     let newPostElement = React.createRef();
    
@@ -19,6 +20,7 @@ const MyPosts = (props) => {
     }
 
     let onPostChange = () =>{
+      debugger;
       let text = newPostElement.current.value;
       let action = updataNewPostTextActionCreator(text);
       props.dispatch(action);
@@ -29,7 +31,7 @@ const MyPosts = (props) => {
         <h3>My posts</h3>
         <div>
           <div>
-            <textarea ref={newPostElement} onChange={onPostChange} placeholder="Input your comment" value={props.newPostText}></textarea>
+            <textarea ref={newPostElement} onChange={onPostChange} placeholder="Input your comment" value={newPostText}></textarea>
           </div>
           <div>
             <button onClick={addPost}>Add post</button>

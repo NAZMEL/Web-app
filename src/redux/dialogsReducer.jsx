@@ -2,21 +2,38 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 
 const dialogsReducer = (state, action) =>{
-    
-    if(action.type === ADD_MESSAGE){
-        let newMessage = {
-          id: 2,
-          message: state.newMessageText,
-        };
-  
-        state.messages.push(newMessage);
-        state.newMessageText = '';
-      }
-      else if(action.type === UPDATE_MESSAGE){
-        state.newMessageText = action.newMessageText;
-      }
 
-    return state;
+  switch(action.type){
+    case ADD_MESSAGE:
+      let newMessage = {
+        id: 2,
+        message: state.newMessageText,
+      };
+
+      state.messages.push(newMessage);
+      state.newMessageText = '';
+      break;
+    case UPDATE_MESSAGE:
+      state.newMessageText = action.newMessageText;
+      break;
+  }
+
+  return state;
+  
+    // if(action.type === ADD_MESSAGE){
+    //     let newMessage = {
+    //       id: 2,
+    //       message: state.newMessageText,
+    //     };
+  
+    //     state.messages.push(newMessage);
+    //     state.newMessageText = '';
+    //   }
+    //   else if(action.type === UPDATE_MESSAGE){
+    //     state.newMessageText = action.newMessageText;
+    //   }
+
+    // return state;
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE});

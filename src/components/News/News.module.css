@@ -1,0 +1,10 @@
+.newsBlock{
+    margin: 20px;
+}
+
+.newsItems{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 30px;
+}

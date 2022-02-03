@@ -1,0 +1,12 @@
+.newsItemBlock{
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.newsTitleBlock{
+    color: yellow;
+}
+
+.newsDescriptionBlock{
+    margin: 10px 0 20px 0;
+}
