@@ -1,7 +1,7 @@
 import React from "react";
 import NewsItem from "./NewsItem/NewsItem";
 import style from './News.module.css';
-import { addNewsCreator, updateNewNewsDescriptionCreator, updateNewNewsTitleCreator } from "../../redux/newsReducer";
+import { addNewsCreator, clearNewsFieldsCreator, updateNewNewsDescriptionCreator, updateNewNewsTitleCreator } from "../../redux/newsReducer";
 
 const News = (props) => {
     let newNewsTitle = props.newsPage.newNewsTitle;
@@ -10,7 +10,9 @@ const News = (props) => {
         .map((newsItem) => <NewsItem id={newsItem.id} 
                                 title={newsItem.title}
                                 description={newsItem.description}/>);
-    
+    let titleField = React.createRef();
+    let textareaField = React.createRef();
+
     let addNews = () => {
         let title = newNewsTitle;
         let description = newNewsDescription;
@@ -31,7 +33,14 @@ const News = (props) => {
         let text = e.target.value;
         let action = updateNewNewsDescriptionCreator(text);
         props.dispatch(action);
-    }                        
+    }
+    
+    let onClearFields = () =>{
+        if(titleField !== '' || textareaField !== ''){
+            let action = clearNewsFieldsCreator();
+            props.dispatch(action);
+        }
+    }
 
 
     return(
@@ -41,18 +50,22 @@ const News = (props) => {
             </div>
 
             <div>
-                Add News
+                
                 <form className={style.addNewsBlock} action="">
+                    <div className={style.newsBlockTitle}>
+                        Add News
+                    </div>
                     <div className={style.newsComponent}>
                         <label for="title">Title</label>
-                        <input id="title" type="text" placeholder="Input title" value={newNewsTitle} onChange={onTitleChange}/>
+                        <input id="title" type="text" placeholder="Input title" ref={titleField} value={newNewsTitle} onChange={onTitleChange}/>
                     </div>
                     <div className={style.newsComponent}>
                         <label for="description">Description</label>
-                        <textarea id="description" placeholder="Input text" value={newNewsDescription} onChange={onDescriptionChange}></textarea>
+                        <textarea className={style.newsComponentTextarea} id="description" placeholder="Input text" ref={textareaField} value={newNewsDescription} onChange={onDescriptionChange}></textarea>
                     </div>
-                    <div className={style.newsComponent}>
+                    <div className={style.newsComponent + ' ' + style.newsComponentButtonsBlock}>
                         <input type="button" value="Add news" onClick={addNews}/>
+                        <input type="button" value="Clear fields" onClick={onClearFields}/>
                     </div>  
                 </form>
             </div>

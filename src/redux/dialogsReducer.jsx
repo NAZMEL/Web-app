@@ -1,7 +1,29 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 
-const dialogsReducer = (state, action) =>{
+let initialState = {
+  dialogs: [
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+    {id: 1, name: 'Nazar', img: 'https://image.shutterstock.com/image-photo/simple-easy-fast-solution-concept-260nw-1725113818.jpg'},
+  ],
+  messages: [
+    {id: 1, message: 'Message'},
+    {id: 1, message: 'Message 2'},
+    {id: 1, message: 'Message 3'},
+    {id: 1, message: 'Message 4'},
+    {id: 1, message: 'Message 5'},
+    {id: 1, message: 'Message 6'},
+  ],
+  newMessageText: '',
+}
+
+const dialogsReducer = (state = initialState, action) =>{
 
   switch(action.type){
     case ADD_MESSAGE:
@@ -19,21 +41,6 @@ const dialogsReducer = (state, action) =>{
   }
 
   return state;
-  
-    // if(action.type === ADD_MESSAGE){
-    //     let newMessage = {
-    //       id: 2,
-    //       message: state.newMessageText,
-    //     };
-  
-    //     state.messages.push(newMessage);
-    //     state.newMessageText = '';
-    //   }
-    //   else if(action.type === UPDATE_MESSAGE){
-    //     state.newMessageText = action.newMessageText;
-    //   }
-
-    // return state;
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE});

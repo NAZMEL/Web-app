@@ -13,12 +13,58 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 15px;
+    width: 500px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: turquoise;
 }
 
+.newsBlockTitle{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: grey;
+    letter-spacing: 5px;
+}
 .newsComponent{
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    width: 400px;
+}
+
+.newsComponent label{
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+
+.newsComponentTextarea{
+    height: 200px;
+}
+
+.newsComponentButtonsBlock{
+    display: flex;
+    flex-direction: row;
+}
+
+.newsComponent input[type="button"]{
+    width: 150px;
+    background-color: #e7e7e7; 
+    color: black;
+    padding: 10px 28px;
+    border-radius: 8px;
+    align-self: flex-start;
+    margin-right: 20px;
+    transition-duration: 0.4s;
+}
+
+.newsComponent input[type="button"]:hover{
+    background-color: rgb(0, 0, 0);
+    text-decoration: underline;
+    color: white;
 }
