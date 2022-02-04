@@ -6,11 +6,12 @@ import newsReducer from "./newsReducer";
 
 
 let reducers = combineReducers({
-    profileReducer: profileReducer,
-    dialogsReducer: dialogsReducer,
-    sidebarReducer: sidebarReducer,
-    newsReducer: newsReducer,
+    profilePage: profileReducer,
+    dialogsPage: dialogsReducer,
+    sidebarPage: sidebarReducer,
+    newsPage: newsReducer,
 });
+
 let store = createStore(reducers);
 
 export default store;

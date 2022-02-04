@@ -13,7 +13,7 @@ let initialState = {
       newNewsDescription: '',
 }
 
-const newsReducer = (state, action) =>{
+const newsReducer = (state = initialState, action) =>{
     switch(action.type){
         case ADD_NEWS:
             let newNews = {

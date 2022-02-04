@@ -42,15 +42,13 @@ const News = (props) => {
         }
     }
 
-
     return(
         <div className={style.newsBlock}>
             <div className={style.newsItems}>
                {newsElements}
             </div>
 
-            <div>
-                
+            <div> 
                 <form className={style.addNewsBlock} action="">
                     <div className={style.newsBlockTitle}>
                         Add News
