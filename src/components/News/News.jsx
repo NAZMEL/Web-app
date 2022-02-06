@@ -1,7 +1,7 @@
 import React from "react";
 import NewsItem from "./NewsItem/NewsItem";
 import style from './News.module.css';
-import { addNewsCreator, clearNewsFieldsCreator, updateNewNewsDescriptionCreator, updateNewNewsTitleCreator } from "../../redux/newsReducer";
+
 
 const News = (props) => {
     let newNewsTitle = props.newsPage.newNewsTitle;
@@ -13,34 +13,23 @@ const News = (props) => {
     let titleField = React.createRef();
     let textareaField = React.createRef();
 
-    let addNews = () => {
-        let title = newNewsTitle;
-        let description = newNewsDescription;
-
-        if(title !== '' && description !== ''){
-            let action = addNewsCreator();
-            props.dispatch(action);
+    let onAddNews = () => {
+        if(titleField.current.value !== '' && textareaField.current.value !== ''){
+            props.addNews();
         }
     }
 
     let onTitleChange = (e) =>{
         let text = e.target.value;
-        let action = updateNewNewsTitleCreator(text);
-        props.dispatch(action);
+        props.changeTitle(text);
     }      
     
     let onDescriptionChange = (e) =>{
         let text = e.target.value;
-        let action = updateNewNewsDescriptionCreator(text);
-        props.dispatch(action);
+        props.changeDescription(text);
     }
     
-    let onClearFields = () =>{
-        if(titleField !== '' || textareaField !== ''){
-            let action = clearNewsFieldsCreator();
-            props.dispatch(action);
-        }
-    }
+    let onClearFields = () => props.clearFields();
 
     return(
         <div className={style.newsBlock}>
@@ -62,7 +51,7 @@ const News = (props) => {
                         <textarea className={style.newsComponentTextarea} id="description" placeholder="Input text" ref={textareaField} value={newNewsDescription} onChange={onDescriptionChange}></textarea>
                     </div>
                     <div className={style.newsComponent + ' ' + style.newsComponentButtonsBlock}>
-                        <input type="button" value="Add news" onClick={addNews}/>
+                        <input type="button" value="Add news" onClick={onAddNews}/>
                         <input type="button" value="Clear fields" onClick={onClearFields}/>
                     </div>  
                 </form>

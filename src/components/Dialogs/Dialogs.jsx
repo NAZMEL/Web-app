@@ -14,7 +14,7 @@ const Dialogs = (props) => {
     let newMessage = React.createRef();
 
     let onSendMessage = () => {
-        if(newMessage !== ""){
+        if(newMessage.current.value !== ""){
             props.sendMessage();
         }
     }

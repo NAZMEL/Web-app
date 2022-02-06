@@ -14,30 +14,33 @@ let initialState = {
 }
 
 const newsReducer = (state = initialState, action) =>{
+    let stateCopy = {...state};
+    
     switch(action.type){
         case ADD_NEWS:
             let newNews = {
                 id: 4,
-                title: state.newNewsTitle,
-                description: state.newNewsDescription,
+                title: stateCopy.newNewsTitle,
+                description: stateCopy.newNewsDescription,
             };
 
-            state.news.push(newNews);
-            state.newNewsTitle = '';
-            state.newNewsDescription = '';
+            stateCopy.news = [...state.news];
+            stateCopy.news.push(newNews);
+            stateCopy.newNewsTitle = '';
+            stateCopy.newNewsDescription = '';
             break;
         case UPDATE_NEW_NEWS_TITLE:
-            state.newNewsTitle = action.newText;
+            stateCopy.newNewsTitle = action.newText;
             break;
         case UPDATE_NEW_NEWS_DESCRIPTION:
-            state.newNewsDescription = action.newText;
+            stateCopy.newNewsDescription = action.newText;
             break;
         case CLEAR_NEWS_FIELDS:
-            state.newNewsTitle = '';
-            state.newNewsDescription = '';
+            stateCopy.newNewsTitle = '';
+            stateCopy.newNewsDescription = '';
             break;
     }
-    return state;
+    return stateCopy;
 }
 
 export const addNewsCreator = () => ({type : ADD_NEWS});

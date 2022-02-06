@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Music from './components/Music/Music';
-import News from './components/News/News';
+import NewsContainer from './components/News/NewsContainer';
 import Settings from './components/Settings/Settings';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -22,8 +22,7 @@ const App = (props) => {
           <Routes>
             <Route path="/dialogs" element={<DialogsContainer/>}/>
             <Route path="/profile" element={<Profile />}/>
-            <Route path="/news" element={<News newsPage={props.state.newsPage}
-                                                dispatch={props.dispatch}/>}/>
+            <Route path="/news" element={<NewsContainer/>}/>
             <Route path="/music" element={<Music/>}/>
             <Route path="/settings" element={<Settings/>}/>
           </Routes>
