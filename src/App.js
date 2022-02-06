@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
+import UsersContainer from './components/Users/UsersContainer';
 import Music from './components/Music/Music';
 import NewsContainer from './components/News/NewsContainer';
 import Settings from './components/Settings/Settings';
@@ -22,6 +23,7 @@ const App = (props) => {
           <Routes>
             <Route path="/dialogs" element={<DialogsContainer/>}/>
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/users" element={<UsersContainer />}/>
             <Route path="/news" element={<NewsContainer/>}/>
             <Route path="/music" element={<Music/>}/>
             <Route path="/settings" element={<Settings/>}/>
