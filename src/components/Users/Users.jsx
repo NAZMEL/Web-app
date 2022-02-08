@@ -5,20 +5,44 @@ import * as axios from 'axios';
 class Users extends React.Component{
     constructor(props){
         super(props);
-        this.getUsers();
     }
 
-    getUsers(){
-        if(this.props.users.length === 0){
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response =>{
+    componentDidMount(){
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response =>{
                 this.props.setUsers(response.data.items);
-        });
-        }
+                this.props.setTotalUsersCount(response.data.totalCount);
+            });
+    }
+
+    onPageChange = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response =>{
+                this.props.setUsers(response.data.items);
+            });
     }
 
     render(){
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++){
+            if(pages.length < 15){
+                pages.push(i);
+            }
+        }
+
         return(
-            <div>
+            <div className={style.usersBlock}>
+                <div className={style.navigationBlock}>
+                    {pages.map(page => {
+                        return(
+                            <div className={this.props.currentPage === page && style.selectedPage + ' ' + style.pageNumber || style.pageNumber}
+                            onClick={(e) => {this.onPageChange(page)}}>{page}</div>
+                        )})}
+                </div>
+
                 {this.props.users.map(user => (
                     <div className={style.userItem} key={user.id}> 
                         <span className={style.userItemIdBlock}>User ID: {user.id}</span>

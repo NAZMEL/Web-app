@@ -1,3 +1,28 @@
+.usersBlock{
+    max-width: 1000px;
+}
+
+.navigationBlock{
+    display: flex;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.selectedPage{
+    font-weight: bold;
+    color: green;
+}
+
+.pageNumber{
+    margin-right: 5px;
+}
+
+.pageNumber:hover{
+    cursor: pointer;
+    font-size: 23px;
+}
+
 .userImg{
     width: 100px;
     height: 100px;
