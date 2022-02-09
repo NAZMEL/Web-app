@@ -11,19 +11,6 @@ const Dialogs = (props) => {
         .map( message => <Message message={message.message}/>)
     let newMessageText = props.dialogsPage.newMessageText;
 
-    let newMessage = React.createRef();
-
-    let onSendMessage = () => {
-        if(newMessage.current.value !== ""){
-            props.sendMessage();
-        }
-    }
-
-    let onMessageChange = (e) =>{
-        let text = e.target.value;
-        props.updateMessageChange(text);
-    }
-
     return(
         <div className={style.dialogs}>
             <div className={style.dialogsItems}> 
@@ -33,15 +20,15 @@ const Dialogs = (props) => {
                <div>
                    {messagesElements}
                 </div>
-                <div>
-                    <div>
-                        <textarea ref={newMessage} 
-                                    onChange={onMessageChange} 
+                <div className={style.dialogsMessagesAddMessageBlock}>
+                    <div >
+                        <textarea className={style.dialogsMessagesTextArea} 
+                                    onChange={(e) => {props.onChangeMessage(e.target.value)}} 
                                     placeholder="Input message text" 
                                     value={newMessageText}></textarea>
                     </div>
                     <div>
-                        <button onClick={onSendMessage}>Send message</button>
+                        <button onClick={() => props.onSendMessage()}>Send message</button>
                     </div>
                 </div>
             </div>

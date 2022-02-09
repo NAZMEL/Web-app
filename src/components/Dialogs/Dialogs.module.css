@@ -16,6 +16,22 @@
   padding: 10px;
 }
 
+.dialogsMessagesAddMessageBlock{
+  max-width: 900px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.dialogsMessagesTextArea{
+  width: 800px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.dialogsMessagesTextArea:focus{
+  background: blanchedalmond;
+}
+
 .message{
   margin: 25px;
 }

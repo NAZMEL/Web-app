@@ -1,7 +1,32 @@
+import React from "react";
 import { connect } from "react-redux";
 import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/dialogsReducer";
 import Dialogs from './Dialogs';
 
+
+class DialogsContainer extends React.Component{
+    constructor(props){
+        super(props);
+    }    
+
+    onSendMessage = () => {
+        if(this.props.dialogsPage.newMessageText !== ''){
+            this.props.sendMessage();
+        }
+    }
+
+    onChangeMessage = (textMessage) => {
+        this.props.updateMessageChange(textMessage);
+    }
+
+    render(){
+        return(
+            <Dialogs dialogsPage={this.props.dialogsPage}
+                    onSendMessage={this.onSendMessage}
+                    onChangeMessage={this.onChangeMessage}/>
+        )
+    }
+}
 
 let matStateToProps = (state) =>{
     return{
@@ -11,17 +36,17 @@ let matStateToProps = (state) =>{
 
 let matDispatchToProps = (dispatch) =>{
     return{
-        sendMessage:() => {
+        sendMessage: () => {
             let action = addMessageActionCreator();
             dispatch(action);
         },
-        updateMessageChange:(text) =>{
+        updateMessageChange: (text) =>{
+            debugger;
             let action = updateMessageActionCreator(text);
             dispatch(action);
         }
     }
 }
 
-const DialogsContainer = connect(matStateToProps, matDispatchToProps)(Dialogs);
 
-export default DialogsContainer;
+export default connect(matStateToProps, matDispatchToProps)(DialogsContainer);
