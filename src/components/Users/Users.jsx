@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import style from './Users.module.css';
+import style from "./Users.module.css";
+import UserIconContainer from "./../common/UserIcon/UserIconContainer";
 
 let Users = (props) =>{
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -21,14 +22,13 @@ let Users = (props) =>{
                             onClick={(e) => {props.onPageChange(page)}}>{page}</div>
                         )})}
                 </div>
-
                 {props.users.map(user => (
                     <div className={style.userItem} key={user.id}> 
                         <span className={style.userItemIdBlock}>User ID: {user.id}</span>
                         <span>
                             <div>
                                 <NavLink to={`/profile/${user.id}`}>
-                                    <img className={style.userImg} src={user.photos.small != null ? user.photos.small  : "https://cdn-icons-png.flaticon.com/512/149/149071.png"} alt="User image"/>
+                                    <UserIconContainer imgPath={user.photos.small}/>
                                 </NavLink>
                             </div>
                             <div>
