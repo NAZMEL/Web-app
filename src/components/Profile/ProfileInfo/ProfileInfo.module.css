@@ -1,3 +1,35 @@
-.descriptionBlock{
+.headSpan{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.userProfile{
+  display: flex;
+  flex-direction: row;
   padding: 10px;
 }
+
+.profileSidebar{
+  margin: 15px 100px 15px 10px;
+  max-width: 400px;
+}
+
+.userIdBlock{
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 10px;
+}
+
+.aboutMeBlock{
+  margin-top: 30px;
+}
+
+.profileContacts{
+  margin: 15px 100px 15px 20px;
+}
+
+.profileContactsItem{
+  margin-bottom: 10px;
+}
+
