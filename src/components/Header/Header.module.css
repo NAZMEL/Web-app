@@ -3,6 +3,14 @@
     background-color: greenyellow;
   }
   
-  .header img{
+.header img{
     width: 100px;
-  }
+}
+
+.loginBlock{
+  float: left;
+}
+
+.loginBlock a{
+  color: white;
+}
