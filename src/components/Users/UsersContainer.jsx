@@ -4,7 +4,7 @@ import { usersAPI} from "../../api/users-api";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { followCreator, setUsersCreator, unFollowCreator, setCurrentPageCreator,
-    setUsersTotalCountCreator, toggleIsFetchingCreator} from "../../redux/usersReducer";
+    setUsersTotalCountCreator, toggleIsFetchingCreator, toggleIsFollowingProgressCreator} from "../../redux/usersReducer";
 
 
 
@@ -28,22 +28,6 @@ class UsersContainer extends React.Component{
             });
     }
 
-    onFollowUser = (userId) =>{
-        usersAPI.followUser(userId).then(data =>{
-            if(data.resultCode === 0){
-                this.props.follow(userId);
-            }
-        });
-    }
-
-    onUnFollowUser = (userId) =>{
-        usersAPI.unFollowUser(userId).then(data =>{
-            if(data.resultCode === 0){
-                this.props.unFollow(userId);
-            }
-        })
-    }
-
     render(){
         return <>
                 {this.props.isFetching ? <Preloader/> : null}
@@ -51,9 +35,11 @@ class UsersContainer extends React.Component{
                     pageSize={this.props.pageSize}
                     currentPage={this.props.currentPage}
                     users={this.props.users}
-                    follow={this.onFollowUser}
-                    unFollow={this.onUnFollowUser}
+                    follow={this.props.follow}
+                    unFollow={this.props.unFollow}
                     onPageChange={this.onPageChange}
+                    followingInProgress={this.props.followingInProgress}
+                    toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
                 />
         </>
     }
@@ -66,6 +52,7 @@ let mapStateToProps = (state) =>{
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
@@ -88,6 +75,9 @@ let mapDispatchToProps = (dispatch) =>{
         },
         toggleIsFetching: (isFething) => {
             dispatch(toggleIsFetchingCreator(isFething));
+        },
+        toggleIsFollowingProgress:(isFetching, userId) =>{
+            dispatch(toggleIsFollowingProgressCreator(isFetching, userId));
         }
     }
 }
