@@ -33,19 +33,14 @@ let Users = (props) =>{
                             </div>
                             <div>
                                 {user.followed 
-                                ? <button onClick={() => {props.unFollow(user.id)}}>Unfollow</button> 
-                                : <button onClick={() => {props.follow(user.id)}}>Follow</button>}
+                                ? <button onClick={() => {props.follow(user.id)}}>Unfollow</button> 
+                                : <button onClick={() => {props.unFollow(user.id)}}>Follow</button>}
                             </div>
                         </span>
                         <span>
                             <span>
-                                {/* <div>{user.fullName}</div> */}
                                 <div>{user.name}</div>
                                 <div>{user.status}</div>
-                            </span>
-                            <span>
-                                {/* <div>{user.location.country}</div> */}
-                                {/* <div>{user.location.city}</div> */}
                             </span>
                         </span>
                     </div>
