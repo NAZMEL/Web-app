@@ -1,9 +1,8 @@
 import React from "react";
-import * as axios from "axios";
 import { connect } from "react-redux";
 import { useMatch } from "react-router-dom";
 import Profile from "./Profile";
-import {getUserInfo} from "./../../redux/profileReducer";
+import {getUserProfile} from "./../../redux/profileReducer";
 
 
 class ProfileContainer extends React.Component{
@@ -17,7 +16,7 @@ class ProfileContainer extends React.Component{
             userId = 2;
         }
 
-        this.props.getUserInfo(userId);
+        this.props.getUserProfile(userId);
     }
     
     render(){
@@ -37,5 +36,5 @@ let UrlDataContainerComponent = (props) =>{
 }
 
 export default connect(mapStateToProps, {
-    getUserInfo,
+    getUserProfile,
 })(UrlDataContainerComponent);
