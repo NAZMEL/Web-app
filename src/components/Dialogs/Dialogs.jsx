@@ -1,4 +1,5 @@
 import React from "react";
+import {Navigate} from "react-router-dom"
 import style from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
@@ -10,6 +11,11 @@ const Dialogs = (props) => {
     let messagesElements = props.dialogsPage.messages
         .map( message => <Message message={message.message}/>)
     let newMessageText = props.dialogsPage.newMessageText;
+
+    
+    if(!props.isAuth){
+        return <Navigate to='/login'/>
+    }
 
     return(
         <div className={style.dialogs}>

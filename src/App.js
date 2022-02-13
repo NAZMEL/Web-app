@@ -9,7 +9,7 @@ import NewsContainer from './components/News/NewsContainer';
 import Settings from './components/Settings/Settings';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-
+import LoginPage from "./components/Login/Login"
 
 const App = () => {
   console.log(React.version);
@@ -27,6 +27,7 @@ const App = () => {
             <Route path="/news" element={<NewsContainer/>}/>
             <Route path="/music" element={<Music/>}/>
             <Route path="/settings" element={<Settings/>}/>
+            <Route path="/login" element={<LoginPage />}/>
           </Routes>
         </div>
       </div>

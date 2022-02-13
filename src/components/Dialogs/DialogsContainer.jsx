@@ -1,5 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { compose } from "redux";
+import { WithAuthRedirect } from "../../hoc/WithAuthRedirect";
 import {addMessageActionCreator, updateMessageActionCreator} from "../../redux/dialogsReducer";
 import Dialogs from './Dialogs';
 
@@ -23,7 +26,8 @@ class DialogsContainer extends React.Component{
         return(
             <Dialogs dialogsPage={this.props.dialogsPage}
                     onSendMessage={this.onSendMessage}
-                    onChangeMessage={this.onChangeMessage}/>
+                    onChangeMessage={this.onChangeMessage}
+                    isAuth={this.props.isAuth}/>
         )
     }
 }
@@ -49,4 +53,7 @@ let matDispatchToProps = (dispatch) =>{
 }
 
 
-export default connect(matStateToProps, matDispatchToProps)(DialogsContainer);
+export default compose(
+    connect(matStateToProps, matDispatchToProps),
+    WithAuthRedirect
+)(DialogsContainer);
