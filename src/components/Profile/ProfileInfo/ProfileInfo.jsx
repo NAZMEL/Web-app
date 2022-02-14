@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Preloader from "../../common/Preloader/Preloader";
 import UserIconContainer from "../../common/UserIcon/UserIconContainer";
+import ProfileStatus from "./ProfileStatus";
 import style from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) =>{
@@ -13,14 +14,11 @@ const ProfileInfo = (props) =>{
 
     return(
       <div>
-        {/* <div>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" alt=""/>
-        </div> */}
-
         <div className={style.userProfile}>
           <div className={style.profileSidebar}>
             <div className={style.userIdBlock}>User ID: {props.profile.userId}</div>
-            <UserIconContainer imgPath={props.profile.photos.small}/>
+              <UserIconContainer imgPath={props.profile.photos.small}/>
+              <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             <div className={style.aboutMeBlock}>
               <span className={style.headSpan}>Description: </span><br/> {props.profile.aboutMe}
             </div>
