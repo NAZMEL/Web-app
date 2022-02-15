@@ -1,44 +1,32 @@
 import React from "react";
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
+import MyPostFormRedux from "./MyPostsForm";
 
 
 const MyPosts = (props) => {
-    let postsElements = props.posts
-      .map(post => <Post message={post.message} like={post.likesCount}/> );
-    let newPostText = props.newPostText;
+  let postsElements = props.posts
+    .map(post => <Post message={post.message} like={post.likesCount} />);
 
-    let newPostElement = React.createRef();
-   
-    let onAddPost = () =>{
-      if(newPostText !== ''){
-        props.addPost();
-      }
+  let onAddPost = (values) => {
+    if (values.newMyPostText !== '') {
+      props.addPost(values.newMyPostText);
+      values.newMyPostText = '';
     }
+  }
 
-    let onPostChange = () =>{
-      let text = newPostElement.current.value;
-      props.updateNewPostText(text);
-    }
-
-
-    return (
-        <div className={style.postBlock}>
-        <h3>My posts</h3>
-        <div>
-          <div>
-            <textarea ref={newPostElement} onChange={onPostChange} placeholder="Input your comment" value={newPostText}></textarea>
-          </div>
-          <div>
-            <button onClick={onAddPost}>Add post</button>
-          </div>
-        </div>
-
-        <div className={style.posts}>
-          {postsElements}
-        </div>
+  return (
+    <div className={style.postBlock}>
+      <h3>My posts</h3>
+      <div>
+        <MyPostFormRedux onSubmit={onAddPost} />
       </div>
-    )
+
+      <div className={style.posts}>
+        {postsElements}
+      </div>
+    </div>
+  )
 }
 
 

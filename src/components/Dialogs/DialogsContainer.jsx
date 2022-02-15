@@ -12,9 +12,16 @@ class DialogsContainer extends React.Component{
         super(props);
     }    
 
-    onSendMessage = () => {
-        if(this.props.dialogsPage.newMessageText !== ''){
-            this.props.sendMessage();
+    // onSendMessage = () => {
+    //     debugger;
+    //     if(this.props.dialogsPage.newMessageText !== ''){
+    //         this.props.sendMessage();
+    //     }
+    // }
+
+    onSendMessage = (messageText) => {
+        if(messageText !== ''){
+            this.props.sendMessage(messageText);
         }
     }
 
@@ -40,8 +47,12 @@ let matStateToProps = (state) =>{
 
 let matDispatchToProps = (dispatch) =>{
     return{
-        sendMessage: () => {
-            let action = addMessageActionCreator();
+        // sendMessage: () => {
+        //     let action = addMessageActionCreator();
+        //     dispatch(action);
+        // },
+        sendMessage: (messageText) => {
+            let action = addMessageActionCreator(messageText);
             dispatch(action);
         },
         updateMessageChange: (text) =>{
