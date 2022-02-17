@@ -1,0 +1,11 @@
+.loginForm{
+    margin: 30px;
+    max-width: 300px;
+}
+
+.loginFormItem{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 14px;
+}

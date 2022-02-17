@@ -1,5 +1,7 @@
 .header{
     grid-area: h;
+    display: flex;
+    flex-direction: row;
     background-color: greenyellow;
   }
   
@@ -12,5 +14,26 @@
 }
 
 .loginBlock a{
+  display: flex;
+  flex-direction: row;
   color: white;
+}
+
+.loginBlock .loginBlockElements{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  
+}
+
+.loginBlock .loginBlockElements .loginBlockElementsItem{
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.loginBlock .loginBlockElementsItem{
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
