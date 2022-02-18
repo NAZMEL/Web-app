@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Users.module.css";
 import UserIconContainer from "./../common/UserIcon/UserIconContainer";
-import { usersAPI } from "../../api/users-api";
 
 let Users = (props) =>{
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);

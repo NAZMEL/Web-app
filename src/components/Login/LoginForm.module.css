@@ -9,3 +9,10 @@
     margin-bottom: 10px;
     font-size: 14px;
 }
+
+.formSummaryError{
+    border: 1px solid red;
+    background-color: grey;
+    color: red;
+    padding: 5px;
+}
