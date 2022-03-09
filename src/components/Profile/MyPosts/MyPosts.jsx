@@ -5,6 +5,7 @@ import MyPostFormRedux from "./MyPostsForm";
 
 
 const MyPosts = (props) => {
+  console.log("hello");
   let postsElements = props.posts
     .map(post => <Post message={post.message} like={post.likesCount} />);
 

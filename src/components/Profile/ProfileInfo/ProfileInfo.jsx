@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Preloader from "../../common/Preloader/Preloader";
 import UserIconContainer from "../../common/UserIcon/UserIconContainer";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 import style from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) =>{
@@ -18,10 +18,10 @@ const ProfileInfo = (props) =>{
           <div className={style.profileSidebar}>
             <div className={style.userIdBlock}>User ID: {props.profile.userId}</div>
               <UserIconContainer imgPath={props.profile.photos.small}/>
-              <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+              <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} />
             <div className={style.aboutMeBlock}>
               <span className={style.headSpan}>Name: </span> {props.profile.fullName}<br/>
-              { props.profile.aboutMe && <><span className={style.headSpan}>Description: </span> props.profile.aboutMe</> }
+              { props.profile.aboutMe && <><span className={style.headSpan}>Description: </span> {props.profile.aboutMe}</> }
             </div>
           </div>
 
