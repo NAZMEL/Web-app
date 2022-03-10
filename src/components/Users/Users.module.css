@@ -10,9 +10,22 @@
     margin: 15px 10px 10px 10px;
 }
 
+.navigationBlockItems{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
 .selectedPage{
+    background-color: azure;
+    margin-right: 10px;
+    padding: 10px;
+    width: 25px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
     font-weight: bold;
-    color: rgb(251, 255, 10);
+    color: black;
 }
 
 .pageNumber{
@@ -21,12 +34,13 @@
     margin-right: 10px;
     padding: 10px;
     background-color: aqua;
-    border-radius: 25px;
+    font-size: 20px;
+    border-radius: 50%;
  }
 
 .pageNumber:hover{
     cursor: pointer;
-    font-size: 23px;
+    background-color: azure;
     font-weight: bold;
 }
 
