@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NAZMEL/Web-app/static/css/main.dc3f9d44.css",
+    "main.js": "/NAZMEL/Web-app/static/js/main.de389ac7.js",
+    "static/media/userIcon.png": "/NAZMEL/Web-app/static/media/userIcon.a6143582309785dca610.png",
+    "static/media/preloader.svg": "/NAZMEL/Web-app/static/media/preloader.a77783fdcdf4ac8971b06d22ff106d87.svg",
+    "index.html": "/NAZMEL/Web-app/index.html",
+    "main.dc3f9d44.css.map": "/NAZMEL/Web-app/static/css/main.dc3f9d44.css.map",
+    "main.de389ac7.js.map": "/NAZMEL/Web-app/static/js/main.de389ac7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc3f9d44.css",
+    "static/js/main.de389ac7.js"
+  ]
+}
