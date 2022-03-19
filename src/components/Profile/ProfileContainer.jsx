@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useMatch, Navigate } from "react-router-dom";
 import { WithAuthRedirect } from "../../hoc/WithAuthRedirect";
-import { getUserProfile, getStatus, updateStatus } from "./../../redux/profileReducer";
+import { getUserProfile, getStatus, updateStatus, saveProfile } from "./../../redux/profileReducer";
 import { getUserProfileSelector, getUserStatusSelector, getUserIdSelector, getUserIsAuthSelector } from "../../redux/profileSelector";
 import Profile from "./Profile";
 
@@ -49,5 +49,5 @@ let UrlDataContainerComponent = (props) => {
 
 
 export default connect(mapStateToProps, {
-    getUserProfile, getStatus, updateStatus,
+    getUserProfile, getStatus, updateStatus, saveProfile
 })(UrlDataContainerComponent);

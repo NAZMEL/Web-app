@@ -77,4 +77,13 @@ export const updateStatus = (statusText) => (dispatch) =>{
   })
 }
 
+export const saveProfile = (profile) => async(dispatch, getState) => {
+  let data = await userProfileAPI.saveProfile(profile);
+  //const userId = getState().auth.userId;
+  const userId = 22384;
+  if(data.resultCode === 0){
+    dispatch(getUserProfile(userId));
+  }
+}
+
 export default profileReducer;

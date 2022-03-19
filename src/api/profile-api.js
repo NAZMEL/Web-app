@@ -13,6 +13,8 @@ export const  userProfileAPI = {
         return instance.put(`profile/status`,{
             status: statusText,
         }).then(response => response.data);
-    }
-
+    },
+    saveProfile(profile){
+        return instance.put(`profile`, profile).then(response => response.data);
+    },
 }

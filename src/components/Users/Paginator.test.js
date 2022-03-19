@@ -15,5 +15,5 @@ describe('Paginator tests', () => {
         const root = component.root;
         let buttons = root.findAllByType("button");
         expect(buttons.length).toBe(1);
-    })
+    });
 })
