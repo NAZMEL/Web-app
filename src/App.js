@@ -1,30 +1,27 @@
-import React from 'react';
-import './App.css';
-import HeaderContainer from './components/Header/HeaderContainer';
-import Navbar from './components/Navbar/Navbar';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import Music from './components/Music/Music';
-import NewsContainer from './components/News/NewsContainer';
-import Settings from './components/Settings/Settings';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import LoginPage from "./components/Login/Login"
-import { connect } from 'react-redux';
-import { initializeApp } from './redux/appReducer';
+import React from "react";
+import "./App.css";
+import HeaderContainer from "./components/Header/HeaderContainer";
+import Navbar from "./components/Navbar/Navbar";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+import Music from "./components/Music/Music";
+import NewsContainer from "./components/News/NewsContainer";
+import Settings from "./components/Settings/Settings";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import LoginPage from "./components/Login/Login";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
-
 class App extends React.Component {
-
   componentDidMount() {
     this.props.initializeApp();
   }
 
   render() {
-
     if (!this.props.initialized) {
-      return <Preloader />
+      return <Preloader />;
     }
 
     return (
@@ -53,8 +50,8 @@ class App extends React.Component {
 let mapStateToProps = (state) => {
   return {
     initialized: state.app.initialized,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, { initializeApp })(App);
 
@@ -80,6 +77,5 @@ export default connect(mapStateToProps, { initializeApp })(App);
 //     </BrowserRouter>
 //   );
 // }
-
 
 // export default App;

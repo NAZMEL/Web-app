@@ -1,32 +1,31 @@
+import React from "react";
 import { getAuthUserData } from "./authReducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = "INITIALIZED-SUCCESS";
 
+let initialState = {
+  initialized: true,
+};
 
-let initialState  = {
-    initialized: true,
-}
+const appReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INITIALIZED_SUCCESS:
+      return {
+        ...state,
+        initialized: true,
+      };
+    default:
+      return state;
+  }
+};
 
-const appReducer = (state = initialState, action) =>{
+export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
-    switch(action.type){
-        case INITIALIZED_SUCCESS:
-           return{
-               ...state,
-               initialized: true,
-           } 
-        default:
-            return state;
-    }
-}
-
-export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
-
-export const initializeApp = () => (dispatch) =>{
-    let promise = dispatch(getAuthUserData());
-    promise.then(() =>{
-        dispatch(initializedSuccess());
-    })
-}
+export const initializeApp = () => (dispatch) => {
+  let promise = dispatch(getAuthUserData());
+  promise.then(() => {
+    dispatch(initializedSuccess());
+  });
+};
 
 export default appReducer;
